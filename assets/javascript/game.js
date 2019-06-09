@@ -1,23 +1,47 @@
-var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
 "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
 "u", "v", "w", "x", "y", "z"]
 
+var guesses = 9;
 var wins = 0;
-var loses = 0;
+var losses = 0;
+var guessesLeft = 9;
+var guessesSoFar = [];
 
 var guess = document.getElementById("guess");
-var winsText = document.getElementById("wins-text");
-var losesText = document.getElementById("loses-text");
-var guessesLeftText = document.getElementById("guessesLeft-text");
-var guessesSoFarText = document.getElementById("guessesSoFar-text");
+var winsText = document.getElementById("winsText");
+var lossesText = document.getElementById("losesText");
+var guessesLeftText = document.getElementById("guessesLeftText");
+var guessesSoFarText = document.getElementById("guessesSoFarText");
+
+var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+
+console.log(computerGuess)
+
+var userGuess = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+    "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+    "u", "v", "w", "x", "y", "z"];
 
 document.onkeyup = function(event) {
     var userGuess = event.key;
 
-    var computerGuess = computerChoices(Math.floor(Math.random() * computerChoices.length));
+    if (computerGuess === userGuess) {
+        wins++;
+        guessesLeft = 9;
+        guessesSoFar = [];
+    }
+    else {
+        guessesLeft--;
+    }
 
-    if (userGuess === )
-    //(userGuess === computerGuess) {
-        //wins++;
+    if (guessesLeft === 0) {
+        losses--;
+        guessesLeft = 9;
+        guessesSoFar = [];
     }
 }
+
+document.getElementById("winsText").textContent = "Wins: " + wins;
+lossesText.textContent = "Losses: " + losses;
+guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
+guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar;
