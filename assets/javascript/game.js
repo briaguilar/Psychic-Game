@@ -1,47 +1,63 @@
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
-"j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
-"u", "v", "w", "x", "y", "z"]
 
-var guesses = 9;
+var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+    "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+    "u", "v", "w", "x", "y", "z"]
+
+// Setting all to default numbers
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessesSoFar = [];
 
-var guess = document.getElementById("guess");
-var winsText = document.getElementById("winsText");
-var lossesText = document.getElementById("losesText");
-var guessesLeftText = document.getElementById("guessesLeftText");
-var guessesSoFarText = document.getElementById("guessesSoFarText");
 
-var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+// Sets computerGuess variable equal to random choice from computerChoices array
 
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 console.log(computerGuess)
+// This code works so far ^^
 
-var userGuess = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
-    "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
-    "u", "v", "w", "x", "y", "z"];
 
 document.onkeyup = function(event) {
     var userGuess = event.key;
 
-    if (computerGuess === userGuess) {
-        wins++;
-        guessesLeft = 9;
-        guessesSoFar = [];
+    var newLetter = function() {
+        computerGuess;
+    };
+    
+    var soFar = function() {
+        document.getElementById("userGuesses").innerHTML = "Guesses So Far: " + guessesSoFar;
+    };
+    
+    var left = function() {
+        document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guessesLeft;
     }
-    else {
+    
+    var newGame = function() {
+        guessesSoFar = [];
+        guessesLeft = 9;
+        newLetter();
+        left();
+        soFar();
+    }
+
+    guessesSoFar.push(userGuess);
+    soFar();
+    left();
+
+    if (userGuess === computerGuess) {
+        wins++;
+        document.getElementById("wins").innerHTML = "Wins: " + wins;
+        newGame();
+    }
+
+    if (userGuess != computerGuess) {
         guessesLeft--;
+        document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guessesLeft;
     }
 
     if (guessesLeft === 0) {
-        losses--;
-        guessesLeft = 9;
-        guessesSoFar = [];
+        losses++;
+        document.getElementById("losses").innerHTML = "Losses: " + losses;
+        newGame();
     }
 }
-
-document.getElementById("winsText").textContent = "Wins: " + wins;
-lossesText.textContent = "Losses: " + losses;
-guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
-guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar;
