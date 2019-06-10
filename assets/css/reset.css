@@ -18,3 +18,27 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+body {
+	background-color: black;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 60px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+	color: black;
+	text-align: center;
+	border: solid white;
+	background-color: white;
+
+}
+
+#letter, #wins, #losses, #guessesLeft, #userGuesses {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	color: white;
+	font-size: 30px;
+	font-family: "Oswald", sans-serif;
+}
