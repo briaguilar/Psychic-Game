@@ -42,3 +42,14 @@ h1 {
 	font-size: 30px;
 	font-family: "Oswald", sans-serif;
 }
+
+#letter {
+	margin-bottom: 50px;
+}
+
+#container {
+	display: inline-block;
+}
+img {
+	float: right;
+}
