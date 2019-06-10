@@ -13,15 +13,20 @@ var guessesSoFar = [];
 // Sets computerGuess variable equal to random choice from computerChoices array
 
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-console.log(computerGuess)
-// This code works so far ^^
+console.log(computerGuess);
+
+
+function computerLetter() {
+    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log(computerGuess);
+}
 
 
 document.onkeyup = function(event) {
     var userGuess = event.key;
 
     var newLetter = function() {
-        computerGuess;
+        computerLetter();
     };
     
     var soFar = function() {
